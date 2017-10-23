@@ -1,13 +1,13 @@
 #include "AnyList.h"
 
-
-ostream& operator<<(ostream& out, const AnyList& theList)
+template <typename T>
+ostream& operator<<(ostream& out, const AnyList<T>& theList)
 {
 	if (theList.first == nullptr)
 		out << "List is empty." << endl;
 	else
 	{
-		Node *temp = theList.first;
+		Node<T> *temp = theList.first;
 
 		while (temp != nullptr)
 		{
@@ -19,21 +19,23 @@ ostream& operator<<(ostream& out, const AnyList& theList)
 	return out;
 }
 
-AnyList::AnyList()
+template <typename T>
+AnyList<T>::AnyList()
 {
 	first = nullptr;
 	count = 0;
 }
 
-void AnyList::insert(int elem)
+template <typename T>
+void AnyList<T>::insert(const T& elem)
 {	
-	Node *newNode = new Node(elem, nullptr);
+	Node<T> *newNode = new Node<T>(elem, nullptr);
 
 	if (first == nullptr)
 		first = newNode;
 	else
 	{
-		Node *temp = first;
+		Node<T> *temp = first;
 		while (temp->getNext() != nullptr)
 			temp = temp->getNext();
 		temp->setNext(newNode);
@@ -42,14 +44,16 @@ void AnyList::insert(int elem)
 	++count;
 }
 
-int AnyList::getNumOfElem() const
+template <typename T>
+int AnyList<T>::getNumOfElem() const
 {
 	return count;
 }
 
-void AnyList::destroyList()
+template <typename T>
+void AnyList<T>::destroyList()
 { 
-	Node  *temp = first;
+	Node<T>  *temp = first;
 	
 	while (temp != nullptr)
     {
@@ -61,7 +65,8 @@ void AnyList::destroyList()
 	count = 0;
 }
 
-AnyList::~AnyList()
+template <typename T>
+AnyList<T>::~AnyList()
 {
 	destroyList();
 }

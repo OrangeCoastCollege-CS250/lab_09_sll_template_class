@@ -5,30 +5,32 @@
 #include <string>			
 using namespace std;
 
+template <typename T>
 class Node
 {
 public:
-	Node() : data(0), next(nullptr) {}
-	Node(int theData, Node *newNext) : data(theData), next(newNext){}
-	Node* getNext() const { return next; }
-	int getData( ) const { return data; }
-    void setData(int theData) { data = theData; }
-	void setNext(Node *newNext) { next = newNext; }
+	Node() : data(NULL), next(nullptr) {}
+	Node(const T& theData, Node<T> *newNext) : data(theData), next(newNext){}
+	Node<T>* getNext() const { return next; }
+	T getData( ) const { return data; }
+    void setData(const T& theData) { data = theData; }
+	void setNext(Node<T> *newNext) { next = newNext; }
 	~Node(){}
 private:
-    int data;		
-    Node *next;	//pointer that points to next node
+    T data;		
+    Node<T> *next;	//pointer that points to next node
 };
 
-
+template<typename T>
 class AnyList
 {	
-	friend ostream& operator<<(ostream& out, const AnyList& theList);
+	template<typename T>
+	friend ostream& operator<<(ostream& out, const AnyList<T>& theList);
 
 public:
 	AnyList();	
 
-	void insert(int elem);
+	void insert(const T& elem);
 
 	int getNumOfElem() const;
 
@@ -37,7 +39,7 @@ public:
 	~AnyList();
 
 private:
-	Node *first;
+	Node<T> *first;
 	int count;		
 };
 

@@ -1,5 +1,6 @@
 #include "Pair.h"
 #include "AnyList.h"
+#include "AnyList.cpp"
 
 #include <iostream>
 using namespace std;
@@ -97,5 +98,20 @@ void testPair()
 	// Create your own testing cases after adding the class Pair.
 
 	// NOTE: Do NOT make your class Pair a template.
+	AnyList<Pair> list1, list2, list3;
+	list1.insert(Pair(1, 2));
+	list1.insert(Pair(3, 4));
+	list1.insert(Pair(5, 6));
+	
+	list2.insert(Pair(5, 6));
+	list2.insert(Pair(3, 4));
+	list2.insert(Pair(1, 2));
+	
+	list3.insert(Pair(1, 4));
+	list3.insert(Pair(2, 3));
 
+	cout << "TEST: Ostream operator <<\n\n";
+	cout << "\tList1 is: " << list1 << endl;
+	cout << "\tList2 is: " << list2 << endl;
+	cout << "\tList3 is: " << list3 << endl;
 }
