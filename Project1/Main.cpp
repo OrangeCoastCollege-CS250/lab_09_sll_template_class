@@ -1,3 +1,11 @@
+/*
+Badajoz, Severiano
+
+CS A250
+October 29, 2017
+
+Lab 09
+*/
 #include "Pair.h"
 #include "AnyList.h"
 #include "AnyList.cpp"
